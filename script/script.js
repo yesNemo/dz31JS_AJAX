@@ -9,19 +9,13 @@ async function getMovies(searchTerm, page) {
     const data = await res.json();
     return data;
 }
-async function listMovies(searchTerm, page) {
-    const data = await getMovies(searchTerm, page);
-    const movies = data.Search;
-    displayMovies(movies);
-    return movies;
-}
 function displayMovies(movies) {
     movies.forEach(movie => {
         const listItem = document.createElement('li');
         const title = document.createElement('p');
         const poster = document.createElement('img');
         const year = document.createElement('p');
-
+        
         title.innerText = movie.Title;
         poster.src = movie.Poster;
         year.innerText = movie.Year;
@@ -37,7 +31,7 @@ async function load() {
     searchList.innerHTML = '';
     // currentPage++;
     const searchTerm = movieSearchBox.value.trim();
-    const URL = `https://omdbapi.com/?s=${searchTerm}&page=${currentPage}&apikey=e0ffe730`;
+    const URL = `https://omdbapi.com/?s=${searchTerm}&page=${currentPage}&apikey=3b4db9a4`;
     const res = await fetch(URL);
     const data = await res.json();
     displayMovies(data.Search, true);
@@ -47,7 +41,7 @@ async function loadMore() {
     searchList.innerHTML = '';
     currentPage++;
     const searchTerm = movieSearchBox.value.trim();
-    const URL = `https://omdbapi.com/?s=${searchTerm}&page=${currentPage}&apikey=e0ffe730`;
+    const URL = `https://omdbapi.com/?s=${searchTerm}&page=${currentPage}&apikey=3b4db9a4`;
     const res = await fetch(URL);
     const data = await res.json();
     displayMovies(data.Search, true);
