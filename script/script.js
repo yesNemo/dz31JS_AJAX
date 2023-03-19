@@ -15,7 +15,7 @@ function displayMovies(movies) {
         const title = document.createElement('p');
         const poster = document.createElement('img');
         const year = document.createElement('p');
-        
+
         title.innerText = movie.Title;
         poster.src = movie.Poster;
         year.innerText = movie.Year;
@@ -34,7 +34,7 @@ async function load() {
     const URL = `https://omdbapi.com/?s=${searchTerm}&page=${currentPage}&apikey=3b4db9a4`;
     const res = await fetch(URL);
     const data = await res.json();
-    displayMovies(data.Search, true);
+    displayMovies(data.Search);
 }
 btn.addEventListener('click', load);
 async function loadMore() {
@@ -44,7 +44,7 @@ async function loadMore() {
     const URL = `https://omdbapi.com/?s=${searchTerm}&page=${currentPage}&apikey=3b4db9a4`;
     const res = await fetch(URL);
     const data = await res.json();
-    displayMovies(data.Search, true);
+    displayMovies(data.Search);
 }
 btnMore.addEventListener('click',loadMore);
 
